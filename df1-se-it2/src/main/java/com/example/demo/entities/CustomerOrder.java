@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Order {
+public class CustomerOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,10 @@ public class Order {
     private Date orderDate;
     private String deliveryStatus;
 
-    public Order() {
+    public CustomerOrder() {
     }
 
-    public Order(Long id, String customerEmail, String customerAddress, Date orderDate) {
+    public CustomerOrder(Long id, String customerEmail, String customerAddress, Date orderDate) {
         this.id = id;
         this.customerEmail = customerEmail;
         this.customerAddress = customerAddress;

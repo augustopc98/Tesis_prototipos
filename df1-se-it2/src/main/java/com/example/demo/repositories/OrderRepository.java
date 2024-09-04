@@ -1,10 +1,10 @@
 package com.example.demo.repositories;
 
-import com.example.demo.entities.Order;
+import com.example.demo.entities.CustomerOrder;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OrderRepository extends JpaRepository<Order, Long> {
-    Order save(Order order);
+public interface OrderRepository extends JpaRepository<CustomerOrder, Long> {
+    // Métodos CRUD adicionales si es necesario
 }

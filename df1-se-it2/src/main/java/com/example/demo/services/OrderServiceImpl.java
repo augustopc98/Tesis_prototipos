@@ -1,9 +1,8 @@
 package com.example.demo.services;
 
-import com.example.demo.entities.Order;
+import com.example.demo.entities.CustomerOrder;
 import com.example.demo.repositories.OrderRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Date;
 import java.util.Optional;
@@ -18,25 +17,25 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getAllOrders() {
+    public List<CustomerOrder> getAllOrders() {
         return orderRepository.findAll();
     }
 
     @Override
-    public Order getOrderById(Long id) {
-        Optional<Order> optionalOrder = orderRepository.findById(id);
+    public CustomerOrder getOrderById(Long id) {
+        Optional<CustomerOrder> optionalOrder = orderRepository.findById(id);
         return optionalOrder.orElse(null);
     }
 
     @Override
-    public Order createOrder(String customerEmail, String customerAddress, Date orderDate) {
-        Order order = new Order(null, customerEmail, customerAddress, orderDate);
+    public CustomerOrder createOrder(String customerEmail, String customerAddress, Date orderDate) {
+        CustomerOrder order = new CustomerOrder(null, customerEmail, customerAddress, orderDate);
         return orderRepository.save(order);
     }
 
     @Override
     public void updateOrderDeliveryStatus(Long orderId, String status) {
-        Order order = getOrderById(orderId);
+        CustomerOrder order = getOrderById(orderId);
         if (order != null) {
             order.updateDeliveryStatus(status);
             orderRepository.save(order);
@@ -45,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void sendOrderForDelivery(Long orderId) {
-        Order order = getOrderById(orderId);
+        CustomerOrder order = getOrderById(orderId);
         if (order != null) {
             order.sendForDelivery();
             orderRepository.save(order);

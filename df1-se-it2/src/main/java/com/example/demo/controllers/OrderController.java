@@ -1,6 +1,6 @@
 package com.example.demo.controllers;
 
-import com.example.demo.entities.Order;
+import com.example.demo.entities.CustomerOrder;
 import com.example.demo.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,17 +16,17 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping
-    public List<Order> getAllOrders() {
+    public List<CustomerOrder> getAllOrders() {
         return orderService.getAllOrders();
     }
 
     @GetMapping("/{id}")
-    public Order getOrderById(@PathVariable Long id) {
+    public CustomerOrder getOrderById(@PathVariable Long id) {
         return orderService.getOrderById(id);
     }
 
     @PostMapping
-    public Order createOrder(@RequestBody Order order) {
+    public CustomerOrder createOrder(@RequestBody CustomerOrder order) {
         return orderService.createOrder(order.getCustomerEmail(), order.getCustomerAddress(), order.getOrderDate());
     }
 
